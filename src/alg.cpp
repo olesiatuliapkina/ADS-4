@@ -43,5 +43,5 @@ int countPairs3(int *arr, int len, int value) {
             }
         }
     }
-    return 0;
+    return counter;
 }
