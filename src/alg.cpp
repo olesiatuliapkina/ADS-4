@@ -28,29 +28,31 @@ int countPairs2(int *arr, int len, int value) {
     return counter;
 }
 int countPairs3(int *arr, int len, int value) {
-    int leftborder = 0;
-    int rightborder = len - 1;
     int counter = 0;
-    while (leftborder <= rightborder) {
-        int middle = (leftborder + rightborder) / 2;
-        if (arr[middle] == value) {
-            counter++;
-            int i = middle - 1;
-            while (i >= 0 && arr[i] == value) {
+    for (int i = 0; i < len - 1; i++) {
+        int leftborder = i;
+        int rightborder = len;
+        while (leftborder < rightborder - 1) {
+            int middle = (rightborder + leftborder) / 2;
+            if (arr[i] + arr[middle] == value) {
                 counter++;
-                i--;
+                int temp = middle + 1;
+                while (arr[i] + arr[temp] == value && temp < rightborder) {
+                    temp++;
+                    counter++;
+                }
+                temp = middle - 1;
+                while (arr[i] + arr[temp] == value && temp > leftborder) {
+                    temp--;
+                    counter++;
+                }
+                break;
+            } else if (arr[i] + arr[middle] > value) {
+                rightborder = middle;
+            } else {
+                leftborder = middle;
             }
-            i = middle + 1;
-            while (i < len && arr[i] == value) {
-                i++;
-                counter++;
-            }
-            break;
-        } else if (arr[middle] < value) {
-            leftborder = middle + 1;
-        } else {
-            rightborder = middle - 1;
         }
     }
-    return counter;
+    return count;
 }
