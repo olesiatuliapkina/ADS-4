@@ -39,7 +39,7 @@ int countPairs3(int *arr, int len, int value) {
                 i--;
             }
             i = middle + 1;
-            while (i < size && arr[i] == value) {
+            while (i < len && arr[i] == value) {
                 i++;
                 counter++;
             }
