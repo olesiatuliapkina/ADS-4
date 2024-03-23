@@ -34,7 +34,7 @@ int countPairs3(int *arr, int len, int value) {
             int middle = (leftborder + rightborder) / 2;
             int summ = arr[i] + arr[middle];
             if (summ == value) {
-                counter ++;
+                counter++;
                 break;
             } else if (summ < value) {
                 leftborder = middle + 1;
